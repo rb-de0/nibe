@@ -1,0 +1,6 @@
+// LICENSE: https://github.com/novi/CMeCab/blob/1.0.0/LICENSE.md
+module CMeCab [system] {
+    header "/usr/include/mecab.h"
+    link "mecab"
+    export *
+}

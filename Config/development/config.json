@@ -1,0 +1,17 @@
+{
+  "bot": {
+    "name": "DEV"
+  },
+  "paths": {
+    "public": "frontend/dist",
+    "dictionary": "editor/dictionaries",
+    "wordnetFile": "wnjpn.db"
+  },
+  "server": {
+    "origin": "http://localhost:3000",
+    "wsOrigin": "ws://localhost:8080",
+    "maxClientConnections": 100,
+    "secureOnly": false,
+    "mongoURI": "mongodb://localhost:27017/nibe"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "nibe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "rb_de0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt --hostname '0'",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "format": "prettier --write **/*.{js,vue}"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.1",
+    "@nuxtjs/vuetify": "^1.11.3",
+    "nuxt": "^2.15.6"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 200,
+    "semi": false,
+    "singleQuote": true
+  }
+}

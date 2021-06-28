@@ -1,0 +1,28 @@
+{
+  "name": "editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "rb_de0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nuxt --hostname '0'",
+    "format": "prettier --write components/** pages/** layouts/** api/**"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/vuetify": "^1.11.3",
+    "express": "^4.17.1",
+    "nuxt": "^2.15.6",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 180,
+    "semi": false,
+    "singleQuote": true
+  }
+}

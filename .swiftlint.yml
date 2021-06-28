@@ -1,0 +1,8 @@
+included:
+  - Sources/Nibe
+excluded:
+  - .build
+line_length:
+  warning: 150
+  error: 300
+  ignores_comments: true

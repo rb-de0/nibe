@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "range": {
+        "start": 0,
+        "end": 3
+      },
+      "messages": [
+        "おやすみなさい"
+      ]
+    },
+    {
+      "range": {
+        "start": 4,
+        "end": 9
+      },
+      "messages": [
+        "おはようございます"
+      ]
+    },
+    {
+      "range": {
+        "start": 10,
+        "end": 17
+      },
+      "messages": [
+        "こんにちは"
+      ]
+    },
+    {
+      "range": {
+        "start": 18,
+        "end": 23
+      },
+      "messages": [
+        "こんばんは"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+// LICENSE: https://github.com/novi/CMeCab-OSX/blob/1.0.0/LICENSE.md
+module CMeCabOSX [system] {
+    header "/usr/local/include/mecab.h"
+    link "mecab"
+    export *
+}

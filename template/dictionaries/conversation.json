@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "patterns": [
+        ["こんにちは"]
+      ],
+      "synsets": [],
+      "textContains": [],
+      "messages": [
+        "こんにちは"
+      ]
+    }
+  ]
+}
