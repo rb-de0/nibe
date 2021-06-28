@@ -1,4 +1,5 @@
 setup:
+    mkdir ./editor/dictionaries
 	cp -Rn ./template/dictionaries/* ./editor/dictionaries
 
 up:
