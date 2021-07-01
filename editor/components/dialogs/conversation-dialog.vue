@@ -45,7 +45,7 @@ export default {
       if (item != null) {
         this.patterns = item.patterns.map((p) => {
           return p.join(',')
-        })
+        }).join('\n')
         this.synsets = item.synsets.join('\n')
         this.textContains = item.textContains.join('\n')
         this.messages = item.messages.join('\n')
