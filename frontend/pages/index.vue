@@ -38,6 +38,7 @@
             <ProdFooter />
           </div>
         </footer>
+        <v-snackbar v-model="webSocketConnectionError" color="error" :timeout="5000">接続に失敗しました 時間を空けてからページを開き直してください</v-snackbar>
       </v-container>
     </v-main>
   </v-app>
@@ -60,6 +61,7 @@ export default {
       isSessionActive: true,
       isDevelopment: true,
       wsOrigin: '',
+      webSocketConnectionError: false,
     }
   },
   mounted() {
@@ -68,7 +70,7 @@ export default {
     this.createTicket()
   },
   methods: {
-    async createTicket(ifError) {
+    async createTicket() {
       try {
         const csrfResponse = await this.$axios.get('/csrf')
         const token = csrfResponse.data.token
@@ -78,8 +80,8 @@ export default {
         const ticket = ticketResponse.data.token
         this.socket = new WebSocket(`${this.wsOrigin}/websocket?ticket=${ticket}`)
         this.bindSocket()
-      } catch (error) {
-        console.log(error)
+      } catch {
+        this.webSocketConnectionError = true
       }
     },
     sendChat() {
@@ -112,6 +114,9 @@ export default {
         if (messageData.type === 'leave') {
           this.isSessionActive = false
         }
+      }
+      this.socket.onerror = (error) => {
+        this.webSocketConnectionError = true
       }
     },
   },
