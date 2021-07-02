@@ -8,21 +8,22 @@ final class DefaultConversationMatchResolver: ConversationMatchResolver {
 
     private let threadPool: NIOThreadPool
     private let similarWordsResolver: SimilarWordsResolver
-    private let conversationDictionary: BotConversationDictionary
+    private let dictionariesProvider: BotDictionariesProvider
 
-    init(threadPool: NIOThreadPool, similarWordsResolver: SimilarWordsResolver, conversationDictionary: BotConversationDictionary) {
+    init(threadPool: NIOThreadPool, similarWordsResolver: SimilarWordsResolver, dictionariesProvider: BotDictionariesProvider) {
         self.threadPool = threadPool
         self.similarWordsResolver = similarWordsResolver
-        self.conversationDictionary = conversationDictionary
+        self.dictionariesProvider = dictionariesProvider
     }
 
     func resolve(message: String, tokens: [BotMessageToken], in eventLoop: EventLoop) -> EventLoopFuture<ConversationResolveResult> {
         let tokenSet = Set(tokens.map(\.original))
+        let conversationDictionary = dictionariesProvider.botDictionaries.conversationDictionary
         let similarWordMatched: EventLoopFuture<(pattern: [BotConversationDictionary.Item], synset: [BotConversationDictionary.Item])>
         if let pickedUpToken = tokenSet.randomElement() {
             similarWordMatched = similarWordsResolver.resolve(word: pickedUpToken, on: eventLoop)
                 .recover { _ in [] }
-                .flatMap { [threadPool, conversationDictionary] words -> EventLoopFuture<(pattern: [BotConversationDictionary.Item], synset: [BotConversationDictionary.Item])> in
+                .flatMap { [threadPool] words -> EventLoopFuture<(pattern: [BotConversationDictionary.Item], synset: [BotConversationDictionary.Item])> in
                     let appended = tokens.map(\.original) + words.flatMap { $0.words }
                     let appendedSet = Set(appended)
                     let synsetsSet = Set(words.flatMap { $0.synsets })

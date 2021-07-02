@@ -38,7 +38,7 @@ final class WebSocketClient {
         )
         let context = BotSessionContext(
             services: services,
-            dictionaries: application.botDictionaries,
+            dictionaries: application.botDictionariesProvider.botDictionaries,
             eventLoop: webSocket.eventLoop,
             socket: socketAdapter,
             data: .default,
@@ -50,7 +50,7 @@ final class WebSocketClient {
             eventLoop: webSocket.eventLoop
         )
         let greetingMessageResolver = DefaultBotGreetingMessageResolver(
-            greetingMessageDictonary: application.botDictionaries.greetingMessageDictonary,
+            greetingMessageDictonary: application.botDictionariesProvider.botDictionaries.greetingMessageDictonary,
             dateProvider: application.dateProvider
         )
         self.botSession = BotSession(

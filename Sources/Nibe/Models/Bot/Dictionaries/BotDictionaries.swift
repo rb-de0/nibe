@@ -25,18 +25,3 @@ extension BotDictionaries {
         )
     }
 }
-
-private struct BotDictionariesKey: StorageKey {
-    typealias Value = BotDictionaries
-}
-
-extension Application {
-    var botDictionaries: BotDictionaries {
-        get {
-            return storage[BotDictionariesKey.self]!
-        }
-        set {
-            storage[BotDictionariesKey.self] = newValue
-        }
-    }
-}

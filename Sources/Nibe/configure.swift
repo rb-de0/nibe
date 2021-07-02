@@ -21,7 +21,7 @@ public func configure(_ app: Application) throws {
         .appending(app.configuration.paths.public)
 
     // register bot dictionaries
-    app.botDictionaries = try BotDictionaries.load(for: app)
+    app.botDictionariesProvider = try BotDictionariesProvider(app: app)
 
     // register services
     app.dateProvider = DefaultDateProvider()
@@ -32,7 +32,7 @@ public func configure(_ app: Application) throws {
     app.conversationMatchResolver = DefaultConversationMatchResolver(
         threadPool: app.threadPool,
         similarWordsResolver: similarWordsResolver,
-        conversationDictionary: app.botDictionaries.conversationDictionary
+        dictionariesProvider: app.botDictionariesProvider
     )
 
     // databases
